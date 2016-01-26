@@ -1,0 +1,14 @@
+{
+  "name": "polymer-vulcanize",
+  "version": "1.0.0",
+  "description": "trying vulcanize",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steven Zhang",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
