@@ -1,0 +1,23 @@
+
+<dom-module id="financial-accounts-grid">
+	<template>
+		<h3>Financial Accounts, there are (<span>{{data.length}}</span>) accounts</h3>
+		<table border=1>
+			<tr><td>Id</td><td>Name</td><td>Balance</td></tr>
+		<template is="dom-repeat" items={{data}}>
+			<tr><td>{{item.id}}</td><td>{{item.name}}</td><td>{{item.balance}}</td></tr>
+		</template>
+		</table>
+	</template>
+</dom-module>
+
+<script>
+	Polymer({
+		is: 'financial-accounts-grid',
+		properties: {
+			data: {
+				type: Array
+			}
+		}
+	})
+</script>

@@ -4,11 +4,14 @@
   "description": "trying vulcanize",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp serve"
   },
   "author": "Steven Zhang",
   "license": "MIT",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-serve": "^1.2.0",
+    "gulp-vulcanize": "^6.1.0"
   }
 }

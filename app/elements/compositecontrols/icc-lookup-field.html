@@ -1,0 +1,28 @@
+<link rel="import" href="../controls/icc-label.html">
+<link rel="import" href="../controls/icc-input.html">
+
+
+<dom-module id="icc-lookup-field">
+	<template>
+		<icc-label text=[[text]]></icc-label>
+		<icc-input value=[[value]]></icc-input>
+	</template>
+</dom-module>
+
+<script>
+	Polymer({
+		is: 'icc-lookup-field',
+		properties: {
+			text: {
+				type: String
+			},
+			value: {
+				type: String
+			}
+		},
+		ready: function()
+		{
+			debugger
+		}
+	})
+</script>
