@@ -5,14 +5,12 @@ var vulcanize = require('gulp-vulcanize');
 gulp.task('vulcanize', [
 	'copy-index', 'copy-scripts', 'copy-webcomponent', 'copy-polymer', 'copy-page'
 	, 'vulcanize-components', 'vulcanize-elements', 'vulcanize-layouts'
-	]
-	, function(){
-})
+	])
 
 
 gulp.task('copy-index', function(){
 	// no vulcanize for root index.html
-	return gulp.src(['app/index.html', 'app/routing.html', 'app/scripts/*'])
+	return gulp.src(['app/index.html', 'app/routing.html'])
 	.pipe(gulp.dest('dist/'))
 })
 
@@ -59,9 +57,12 @@ gulp.task('vulcanize-layouts', function(){
 	.pipe(gulp.dest('dist/layouts'))
 })
 
+gulp.task('showMessage', function(){
+	return console.log('Please launch http://localhost:3000 in browser')
+})
 
-gulp.task('serve', serve('app'))
+gulp.task('serve', ['showMessage'], serve('app'))
 
-gulp.task('serve-dist', serve('dist'))
+gulp.task('serve:dist:launch', ['showMessage'], serve('dist'))
 
-gulp.task('serve:dist', ['vulcanize', 'serve-dist'])
+gulp.task('serve:dist', ['vulcanize', 'serve:dist:launch'])
