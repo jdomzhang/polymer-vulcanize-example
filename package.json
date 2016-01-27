@@ -12,7 +12,10 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-folders": "^1.1.0",
     "gulp-serve": "^1.2.0",
-    "gulp-vulcanize": "^6.1.0"
+    "gulp-vulcanize": "^6.1.0",
+    "through": "^2.3.8",
+    "vinyl": "^1.1.1"
   }
 }

@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 var serve = require('gulp-serve');
 var vulcanize = require('gulp-vulcanize');
+var folders = require('gulp-folders')
+var indexCreator = require('./utils/indexCreator')
 
 gulp.task('vulcanize', [
 	'copy-index', 'copy-scripts', 'copy-webcomponent', 'copy-polymer', 'copy-page'
@@ -61,8 +63,40 @@ gulp.task('showMessage', function(){
 	return console.log('Please launch http://localhost:3000 in browser')
 })
 
-gulp.task('serve', ['showMessage'], serve('app'))
+
+//
+// generate index.html files
+//
+gulp.task('generateIndex-components', generateIndex('app/components/'))
+gulp.task('generateIndex-elements', generateIndex('app/elements/'))
+gulp.task('generateIndex', ['generateIndex-components'
+	, 'generateIndex-elements', 'generateIndex-elements-extra'])
+
+
+function generateIndex(rootFolder) {
+	return folders(rootFolder, function(folder){
+		var pathPrefix = rootFolder + folder + '/'
+		return gulp.src([pathPrefix + '*.html', '!' + pathPrefix + 'index.html'])
+		.pipe(indexCreator('.', {removePrefix: pathPrefix}))
+		.pipe(gulp.dest(pathPrefix + 'index.html'))
+	})
+}
+
+gulp.task('generateIndex-elements-extra', function(){
+	return gulp.src([
+		'app/components/controls/index.html',
+		'app/components/compositecontrols/index.html',
+		'app/components/grids/index.html',
+		'!app/components/index.html'])
+	.pipe(indexCreator('.', {removePrefix:'/app/components/'}))
+	.pipe(gulp.dest('app/components/index.html'))
+})
+
+gulp.task('build', ['generateIndex'])
+
+gulp.task('serve', ['build', 'showMessage'], serve('app'))
 
 gulp.task('serve:dist:launch', ['showMessage'], serve('dist'))
 
-gulp.task('serve:dist', ['vulcanize', 'serve:dist:launch'])
+gulp.task('serve:dist', ['build', 'vulcanize', 'serve:dist:launch'])
+
