@@ -4,12 +4,22 @@
 <head>
 	<script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   	<link rel="import" href="./bower_components/polymer/polymer.html"> 
-	<link rel="import" href="./layouts/index.html">
+  	<link rel="import" href="./routing.html"> 
 </head>
 
 <body>
 	<h1>Polymer Vulcanize Example</h1>
-	<dashboard-1></dashboard-1>
+	<li><a href="/">home</a></li>
+	<li><a href="/#!dashboard/dashboard-1">dashboard</a></li>
+
+	<template is="dom-bind" id="app">
+		<iron-pages attr-for-selected="data-route" selected="{{route}}">
+			<!-- Block we'll load our partials into -->
+			<section id="load" data-route="load"></section>
+		</iron-pages>
+	</template>
+
+	<script src="scripts/app.js"></script>
 	
 </body>
 
