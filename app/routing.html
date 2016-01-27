@@ -66,6 +66,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       resetMainDiv(html)
     });
 
+    // custom layouts routing
+    page('/custom/:customlayout', function (data) {
+      app.route = 'custom'
+      app.params = data.params
+      var customlayout = data.params.customlayout
+
+      var html = "<link rel='import' href='/layouts/custom/" + customlayout + ".html'>"
+        + "<" + customlayout + "></" + customlayout + ">"
+
+      resetMainDiv(html)
+    });
+
 
     // 404
     page('*', function() {

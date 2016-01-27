@@ -1,0 +1,37 @@
+<dom-module id="datetime-sparklet">
+  <style is="custom-style">
+  	:host {
+        @apply(--layout-flex);
+    }
+
+    div {
+        background-color: #3951B5;
+        color: #fff;
+		padding: 30px 30px;
+	}
+
+    span {color: white;}
+  </style>
+  <template>
+  	<div>
+  		<span>{{theTimeIs}}</span>
+  	</div>
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+	is: 'datetime-sparklet',
+	properties: {
+		theTimeIs: {
+			type: String
+		}
+	},
+	ready: function() {
+		this.theTimeIs = new Date().toLocaleTimeString();
+		setInterval(function() {
+			this.theTimeIs = new Date().toLocaleTimeString();
+		}.bind(this), 1000);
+    }
+})
+</script>

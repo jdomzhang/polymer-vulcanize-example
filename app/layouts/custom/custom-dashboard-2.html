@@ -1,0 +1,22 @@
+<link rel="import" href="../../elements/sparklets/index.html">
+
+<dom-module id="custom-dashboard-2">
+  <style>
+  div{
+    @apply(--layout-horizontal);
+    @apply(--layout-center);
+  }
+  </style>
+  <template>
+  <div class="horizontal">
+    <customername-sparklet></customername-sparklet>
+  	<datetime-sparklet></datetime-sparklet>
+  </div>
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+	is: 'custom-dashboard-2'
+})
+</script>

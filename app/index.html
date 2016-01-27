@@ -5,15 +5,17 @@
 	<script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   	<link rel="import" href="./bower_components/polymer/polymer.html"> 
   	<link rel="import" href="./routing.html"> 
+  	<link rel="import" href="./layouts/menus/index.html">
 </head>
 
 <body>
 	<h1>Polymer Vulcanize Example</h1>
-	<li><a href="/">home</a></li>
-	<li><a href="/#!dashboard/dashboard-1">dashboard 1</a></li>
-	<li><a href="/#!dashboard/dashboard-2">dashboard 2</a></li>
-	<li><a href="/#!dashboard/dashboard-3">dashboard 3</a></li>
 
+	<h2>Menu</h2>
+	<default-menus></default-menus>
+	<custom-menus></custom-menus>
+
+	<h2>Content</h2>
 	<template is="dom-bind" id="app">
 		<iron-pages attr-for-selected="data-route" selected="{{route}}">
 			<!-- Block we'll load our partials into -->
