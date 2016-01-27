@@ -6,12 +6,15 @@ layouts -> elements -> components
 
 ### elements
 `elements` will be vulcanized one file per sub folder, e.g.
- finance: -> `elements/finance/index.html`
- product: -> `elements/product/index.html`
- warehouse: -> `elements/warehouse/index.html`
+
+- finance: vulcanize to `elements/finance/index.html`
+- product: vulcanize to `elements/product/index.html`
+- warehouse: vulcanize to `elements/warehouse/index.html`
 
 ### components
-`components` is the basic controls, it will be vulcanized to single file, `components/index.html`
+`components` is the basic controls, it will be vulcanized to single file
+
+- `components/index.html`
 
 
 ## Run for development
