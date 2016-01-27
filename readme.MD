@@ -1,3 +1,6 @@
+## Levels
+layouts -> elements -> components
+
 ## Run for development
 `npm start`
 
