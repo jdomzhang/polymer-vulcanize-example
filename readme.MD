@@ -13,7 +13,8 @@ layouts -> elements -> components
 
 ### layouts
 `layouts` will not be vulcanized, it will import stuffs from `elements`.
-`layouts` doesn't know where the data comes from, it only combine `elements` together with various combination.
+
+`layouts` doesn't know where the data comes from, it only combines a few `elements` in various ways.
 
 ### elements
 `elements` will be vulcanized one file per sub folder, e.g.
@@ -23,6 +24,7 @@ layouts -> elements -> components
 - warehouse: vulcanize to `elements/warehouse/index.html`
 
 `elements` will import stuffs from `components` and `bower_components`.
+
 `elements` itself knows where and how the data comes from, and is able to save user's input back to server side.
 
 ### components
@@ -34,5 +36,11 @@ layouts -> elements -> components
 
 `components` only accepts data binding from outside, it knows how to bind the data, but it's not aware of where the data comes from.
 
+## Customization
+Customization includes custom menu and custom layout.
 
+### custom menu
+`custom-menus` exists in `layouts/custom/` folder, it should contains the menu items that link to custom layouts.
 
+### custom layout
+Custom layouts exist in `layouts/custom/` folder, it could either uses the existing `sparklet` and `widget`, or uses other custom elements which by default will be available in the same custom folder (`layouts/custom/`).
