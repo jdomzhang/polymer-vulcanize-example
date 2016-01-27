@@ -1,16 +1,21 @@
 <link rel="import" href="../../components/index.html">
 
 
-<dom-module id="view-financial-accounts">
+<dom-module id="view-financial-account">
 	<template>
-		<h2>list financial accounts</h2>
-		<icc-lookup-field text={{data.name}} value={{data.balance}}></icc-lookup-field>
+		<h2>View Financial Account</h2>
+		<li>
+			<icc-lookup-field text="Account Name" value={{data.name}}></icc-lookup-field>
+		</li>
+		<li>
+			<icc-lookup-field text="Balance" value={{data.balance}}></icc-lookup-field>
+		</li>
 	</template>
 </dom-module>
 
 <script>
 	Polymer({
-		is: 'view-financial-accounts',
+		is: 'view-financial-account',
 		properties: {
 			data: {
 				type: Object

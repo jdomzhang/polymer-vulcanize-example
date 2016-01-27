@@ -48,17 +48,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     page('/', function() {
       app.route = 'home';
       resetMainDiv()
-      // debugger
     });
 
     page(app.baseUrl, function() {
       app.route = 'home';
       resetMainDiv()
-      // debugger
     });
 
     page('/dashboard/:dashboard', function (data) {
-      debugger
       app.route = 'dashboard'
       app.params = data.params
       var dashboard = data.params.dashboard

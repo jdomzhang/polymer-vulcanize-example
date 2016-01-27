@@ -2,38 +2,39 @@ var gulp = require('gulp');
 var serve = require('gulp-serve');
 var vulcanize = require('gulp-vulcanize');
 
-gulp.task('vulcanize', ['vulcanize-index'
+gulp.task('vulcanize', [
+	'copy-index', 'copy-scripts', 'copy-webcomponent', 'copy-polymer', 'copy-page'
 	, 'vulcanize-components', 'vulcanize-elements', 'vulcanize-layouts'
-	, 'vulcanize-copy-webcomponent'
-	, 'vulcanize-copy-polymer'
 	]
 	, function(){
 })
 
-gulp.task('vulcanize-layouts', function(){
-	// no vulcanize, just copy all folders/files under layouts
-	return gulp.src('app/layouts/**/*.*')
-	.pipe(gulp.dest('dist/layouts'))
-})
 
-
-gulp.task('vulcanize-index', function(){
+gulp.task('copy-index', function(){
 	// no vulcanize for root index.html
-	return gulp.src('app/index.html')
-	// .pipe(vulcanize({
-	// 	excludes: ['app/layouts/index.html']
-	// }))
+	return gulp.src(['app/index.html', 'app/routing.html', 'app/scripts/*'])
 	.pipe(gulp.dest('dist/'))
 })
 
-gulp.task('vulcanize-copy-webcomponent', function(){
+gulp.task('copy-scripts', function(){
+	// no vulcanize for root index.html
+	return gulp.src('app/scripts/*')
+	.pipe(gulp.dest('dist/scripts/'))
+})
+
+gulp.task('copy-webcomponent', function(){
 	return gulp.src('app/bower_components/webcomponentsjs/webcomponents-lite.min.js')
 		.pipe(gulp.dest('dist/bower_components/webcomponentsjs/'))
 })
 
-gulp.task('vulcanize-copy-polymer', function(){
+gulp.task('copy-polymer', function(){
 	return gulp.src('app/bower_components/polymer/*.html')
 		.pipe(gulp.dest('dist/bower_components/polymer/'))
+})
+
+gulp.task('copy-page', function(){
+	return gulp.src('app/bower_components/page/page.js')
+		.pipe(gulp.dest('dist/bower_components/page/'))
 })
 
 gulp.task('vulcanize-elements', function(){
@@ -51,6 +52,16 @@ gulp.task('vulcanize-components', function(){
 	.pipe(gulp.dest('dist/components/'))
 })
 
+
+gulp.task('vulcanize-layouts', function(){
+	// no vulcanize, just copy all folders/files under layouts
+	return gulp.src('app/layouts/**/*.*')
+	.pipe(gulp.dest('dist/layouts'))
+})
+
+
 gulp.task('serve', serve('app'))
 
-gulp.task('serve:dist', serve('dist'))
+gulp.task('serve-dist', serve('dist'))
+
+gulp.task('serve:dist', ['vulcanize', 'serve-dist'])
