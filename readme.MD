@@ -2,6 +2,12 @@
  - run `npm install` to install node modules
  - run `bower install` to install bower & Polymer components
 
+## Run for development
+`npm start`
+
+## Run for production
+`npm run start:dist`
+
 ## Levels
 layouts -> elements -> components
 
@@ -30,8 +36,3 @@ layouts -> elements -> components
 
 
 
-## Run for development
-`npm start`
-
-## Run for production
-`npm run start:dist`
